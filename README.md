@@ -27,7 +27,7 @@ Roamwise/
 
 1. **Clone the Repository**
 
-```git clone https://github.com/your-username/Roamwise.git```
+```git clone https://github.com/your-username/Roamwise-Mall-data-.git```
 ```cd Roamwise```
 
 2. **Run Seeder app**
