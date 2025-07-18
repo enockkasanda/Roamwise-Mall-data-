@@ -15,9 +15,9 @@ cursor.execute("""
 CREATE TABLE IF NOT EXISTS stores (
     name TEXT,
     category TEXT,
-    floor TEXT,
+    floor INTEGER,
     open_times TEXT,
-    closing_times TEXT
+    close_times TEXT
 );
 """)
 conn.commit()
@@ -38,8 +38,8 @@ for store in stores:
     name = store.get("name")
     category = store.get("category")
     floor = store.get("floor")
-    open_times = store.get("open_times")
-    closing_times = store.get("closing_times")
+    open_times = store.get("open_time")     
+    close_times = store.get("close_time")  
 
     # Check if store already exists (based on name, category, and floor)
     cursor.execute(
@@ -47,19 +47,19 @@ for store in stores:
         (name, category, floor)
     )
     if cursor.fetchone():
-        print(f"⚠️  Skipping duplicate: {name} ({category}, {floor})")
+        print(f"Skipping duplicate: {name} ({category}, {floor})")  # Removed Unicode
         skipped += 1
         continue
 
     # Insert store record
     cursor.execute("""
-        INSERT INTO stores (name, category, floor, open_times, closing_times)
+        INSERT INTO stores (name, category, floor, open_times, close_times)
         VALUES (?, ?, ?, ?, ?)
-    """, (name, category, floor, open_times, closing_times))
+    """, (name, category, floor, open_times, close_times))
     inserted += 1
 
 # --- Finalize ---
 conn.commit()
 conn.close()
 
-print(f"\n✅ Seeding complete! {inserted} inserted, {skipped} skipped (duplicates).")
+print(f"\nSeeding complete! {inserted} inserted, {skipped} skipped (duplicates).")
