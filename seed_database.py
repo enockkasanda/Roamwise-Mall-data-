@@ -3,8 +3,8 @@ import json
 import os
 
 # --- File paths ---
-JSON_FILE = "mall_data.json"
-DB_FILE = "mall.db"
+JSON_FILE = r"C:\Users\taega\Documents\GitHub\Roamwise-Mall-data-\mall_data.json"
+DB_FILE = r"C:\Users\taega\Documents\GitHub\Roamwise-Mall-data-\mall.db"
 
 # --- Connect to SQLite database ---
 conn = sqlite3.connect(DB_FILE)
@@ -38,8 +38,8 @@ for store in stores:
     name = store.get("name")
     category = store.get("category")
     floor = store.get("floor")
-    open_times = store.get("open_time")     
-    close_times = store.get("close_time")  
+    open_times = store.get("open_times")     
+    close_times = store.get("close_times")  
 
     # Check if store already exists (based on name, category, and floor)
     cursor.execute(
