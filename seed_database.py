@@ -4,7 +4,11 @@ import os
 
 # --- File paths ---
 JSON_FILE = r"C:\Users\taega\Documents\GitHub\Roamwise-Mall-data-\mall_data.json"
+<<<<<<< Updated upstream
 DB_FILE = r"C:\Users\taega\Documents\GitHub\Roamwise-Mall-data-\mall.db"
+=======
+DB_FILE = "mall.db"
+>>>>>>> Stashed changes
 
 # --- Connect to SQLite database ---
 conn = sqlite3.connect(DB_FILE)
